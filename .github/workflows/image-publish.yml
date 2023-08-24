@@ -25,10 +25,10 @@ jobs:
     strategy:
       matrix:
         include:
-          - containerfile: ./ubuntu.containerfile
-            image: ubuntu-toolbox
-          - containerfile: ./ubuntu-cuda.containerfile
-            image: ubuntu-cuda-toolbox
+          - base: docker.io/library/ubuntu:22.04
+            image: ubuntu
+          - base: docker.io/nvidia/cuda:22.04-cudnn8-devel-ubuntu12.1.1
+            image: ubuntu-cuda
     permissions:
       contents: read
       packages: write
@@ -77,7 +77,10 @@ jobs:
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
           context: .
-          file: ${{ matrix.containerfile }}
+          file: containerfile
+          build-args:
+            BASE_IMAGE: ${{  matrix.base  }}
+            DEFAULT_PYTHON: 3.11
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

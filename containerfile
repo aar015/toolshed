@@ -1,7 +1,6 @@
-# GPU compatable base image
-ARG CUDA_VERSION=12.1.1
-ARG UBUNTU_VERSION=22.04
-FROM docker.io/nvidia/cuda:${CUDA_VERSION}-cudnn8-devel-ubuntu${UBUNTU_VERSION}
+# Base image
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
 
 # Install system dependencies
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -24,7 +23,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && rm -rf /var/lib/apt/lists/*
 
 # Install python
-ARG DEFAULT_PYTHON=3.11
+ARG DEFAULT_PYTHON
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
     && apt-get install -y --no-install-recommends software-properties-common \
