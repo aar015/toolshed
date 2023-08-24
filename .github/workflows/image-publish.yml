@@ -25,9 +25,9 @@ jobs:
     strategy:
       matrix:
         include:
-          - containerfile: .ubuntu.containerfile
+          - containerfile: ./ubuntu.containerfile
             image: ${{ github.repository }}/ubuntu-toolbox
-          - containerfile: .ubuntu-cuda.containerfile
+          - containerfile: ./ubuntu-cuda.containerfile
             image: ${{ github.repository }}/ubuntu-cuda-toolbox
     permissions:
       contents: read
