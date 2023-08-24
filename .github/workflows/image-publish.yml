@@ -27,7 +27,7 @@ jobs:
         include:
           - base: docker.io/library/ubuntu:22.04
             image: ubuntu
-          - base: docker.io/nvidia/cuda:22.04-cudnn8-devel-ubuntu12.1.1
+          - base: docker.io/nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
             image: ubuntu-cuda
     permissions:
       contents: read
