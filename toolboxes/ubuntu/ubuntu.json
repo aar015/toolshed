@@ -1,0 +1,60 @@
+{
+  "name" : "ubuntu",
+  "remoteUser": "${localEnv:USER}",
+  "settings": {
+	"dev.containers.copyGitConfig": false,
+	"dev.containers.gitCredentialHelperConfigLocation": "none",
+	"files.associations": {
+		"*.dvc": "yaml",
+		"dvc.lock": "yaml"
+	},
+	"terminal.integrated.defaultProfile.linux": "zsh",
+	"terminal.integrated.profiles.linux": {
+		"bash": null,
+		"JavaScript Debug Terminal": null,
+		"zsh": {
+			"path": "/usr/bin/zsh"
+		},
+		"python": {
+			"path": "/usr/bin/python"
+		}
+	},
+	"python.defaultInterpreterPath": "/usr/bin/python",
+	"python.formatting.provider": "black",
+	"[python]": {
+		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": true
+		},
+		"editor.formatOnType": true
+	},
+	"jupyter.askForKernelRestart": false,
+	"redhat.telemetry.enabled": false
+},
+  "remoteEnv": {
+    "COLORTERM": "${localEnv:COLORTERM}",
+    "DBUS_SESSION_BUS_ADDRESS": "${localEnv:DBUS_SESSION_BUS_ADDRESS}",
+    "DESKTOP_SESSION": "${localEnv:DESKTOP_SESSION}",
+    "DISPLAY": "${localEnv:DISPLAY}",
+    "LANG": "${localEnv:LANG}",
+    "SHELL": "${localEnv:SHELL}",
+    "SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}",
+    "TERM": "${localEnv:TERM}",
+    "VTE_VERSION": "${localEnv:VTE_VERSION}",
+    "XDG_CURRENT_DESKTOP": "${localEnv:XDG_CURRENT_DESKTOP}",
+    "XDG_DATA_DIRS": "${localEnv:XDG_DATA_DIRS}",
+    "XDG_MENU_PREFIX": "${localEnv:XDG_MENU_PREFIX}",
+    "XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}",
+    "XDG_SESSION_DESKTOP": "${localEnv:XDG_SESSION_DESKTOP}",
+    "XDG_SESSION_TYPE": "${localEnv:XDG_SESSION_TYPE}"
+},
+"extensions": [
+	"eamodio.gitlens",
+	"ms-python.python",
+	"ms-python.vscode-pylance",
+	"charliermarsh.ruff",
+	"tamasfe.even-better-toml",
+	"redhat.vscode-yaml",
+	"iterative.dvc"
+]
+}
