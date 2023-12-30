@@ -25,10 +25,10 @@ jobs:
     strategy:
       matrix:
         include:
-          - base: docker.io/library/ubuntu:22.04
-            image: ubuntu
-          - base: docker.io/nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
-            image: ubuntu-cuda
+          - image: ubuntu
+            base: docker.io/library/ubuntu:22.04
+          - image: ubuntu-cuda
+            base: docker.io/nvidia/cuda:12.2.2-cudnn8-devel-ubuntu22.04
     permissions:
       contents: read
       packages: write
@@ -80,7 +80,7 @@ jobs:
           file: containerfile
           build-args: |
             BASE_IMAGE=${{  matrix.base  }}
-            DEFAULT_PYTHON=3.11
+            DEFAULT_PYTHON=3.12
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
