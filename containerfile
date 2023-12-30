@@ -29,7 +29,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get install -y --no-install-recommends software-properties-common \
     && add-apt-repository -y ppa:deadsnakes \
     && apt-get update \
-    && apt-get install -y --no-install-recommends python3.8-venv python3.9-venv python3.10-venv python3.11-venv \
+    && apt-get install -y --no-install-recommends python3.8-venv python3.9-venv python3.10-venv python3.11-venv python3.12-venv \
     && rm -rf /var/lib/apt/lists/* \
     && ln -s /usr/bin/python${DEFAULT_PYTHON} /usr/bin/python
 
