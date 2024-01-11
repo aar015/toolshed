@@ -5,12 +5,19 @@ FROM ${BASE_IMAGE}
 # Install system dependencies
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
-    && apt-get install -y --no-install-recommends curl git podman vim zsh \
+    && apt-get install -y --no-install-recommends curl git ksshaskpass neovim podman software-properties-common zsh \
     && rm -rf /var/lib/apt/lists/*
 
 # Use remote podman
 RUN echo "#\!/usr/bin/sh\n/usr/bin/podman -r \"\$@\"" | tee /usr/local/bin/podman \
     && chmod +x /usr/local/bin/podman
+
+# Install ansible
+RUN export DEBIAN_FRONTEND=noninteractive \
+    && apt-add-repository -y ppa:ansible/ansible \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends ansible \
+    && rm -rf /var/lib/apt/lists/*
 
 #Install gcloud cli
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -25,8 +32,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 # Install python
 ARG DEFAULT_PYTHON
 RUN export DEBIAN_FRONTEND=noninteractive \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends software-properties-common \
     && add-apt-repository -y ppa:deadsnakes \
     && apt-get update \
     && apt-get install -y --no-install-recommends python3.8-venv python3.9-venv python3.10-venv python3.11-venv python3.12-venv \
